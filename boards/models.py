@@ -7,12 +7,18 @@ class Board(models.Model):
     name = models.CharField(max_length=30, unique=True)
     description = models.TextField(max_length=100)
 
+    def __str__(self):
+        return self.name
+    
 
 class Topic(models.Model):
     subject = models.CharField(max_length=100)
     last_updated = models.DateTimeField(auto_now_add=True)
     starter = models.ForeignKey(User, on_delete=models.CASCADE, related_name='topics')
     board = models.ForeignKey("Board", on_delete=models.CASCADE, related_name='topics')
+
+    def __str__(self):
+        return self.subject
 
 
 class Post(models.Model):
@@ -22,3 +28,6 @@ class Post(models.Model):
     update_at = models.DateTimeField(auto_now_add=True,null=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     update_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="+")
+
+    def __str__(self):
+        return self.message[:10]
