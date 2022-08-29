@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'corsheaders',
     'boards.apps.BoardsConfig',
 ]
 
@@ -29,6 +30,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -93,3 +96,11 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "https://9000-sammyjay-ideasapplatest-ua9wvdo4v0r.ws-eu63.gitpod.io",
+    "http://localhost:9000",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://9000-sammyjay-ideasapplatest-ua9wvdo4v0r.ws-eu63.gitpod.io",
+]
