@@ -1,0 +1,39 @@
+{% extends 'boards/_base.html' %} {% block title %} {{board.name}} Board {% endblock title %}
+{% block content %}
+
+<div class="mt-7">
+  <ol class="bg-gray-50 dark:bg-gray-700 py-3 px-1 flex space-x-2 rounded">
+    <li class="text-2xl text-blue-700"><a href="{% url 'boards:home' %}">Boards</a></li>
+    <li class="text-2xl">/</li>
+    <li class="text-2xl ">{{board.name}}</li>
+  </ol>
+  
+<div class="overflow-x-auto relative mt-8 ">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-lg text-white uppercase bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="py-3 px-6">Board</th>
+                <th scope="col" class="py-3 px-6">Posts</th>
+                <th scope="col" class="py-3 px-6">Topics</th>
+                <th scope="col" class="py-3 px-6">Last Post</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for board in boards %}
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td scope="row" class="py-4 px-6 :text-white flex flex-col">
+                  <a href="{% url 'boards:board_topics' board.id %}" class="underline text-xl text-blue-700"
+                    >{{ board.name }}</a
+                  >
+                  <small class="text-lg font-normal">{{ board.description }}</small>
+                </td>
+                <td class="py-4 px-6 text-center">0</td>
+                <td class="py-4 px-6 text-center">0</td>
+                <td class="py-4 px-6 text-center">null</td>
+              </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock content %}

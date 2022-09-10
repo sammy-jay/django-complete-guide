@@ -18,6 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'compressor',
+
     'corsheaders',
     'boards.apps.BoardsConfig',
 ]
@@ -63,7 +65,6 @@ DATABASES = {
 }
 
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -80,7 +81,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -92,15 +92,21 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'templates'
+    BASE_DIR / 'static'
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://9000-sammyjay-ideasapplatest-ua9wvdo4v0r.ws-eu63.gitpod.io",
+    "https://9000-sammyjay-ideasapplatest-ua9wvdo4v0r.ws-eu64.gitpod.io",
     "http://localhost:9000",
 ]
 CSRF_TRUSTED_ORIGINS = [
-    "https://9000-sammyjay-ideasapplatest-ua9wvdo4v0r.ws-eu63.gitpod.io",
+    "https://9000-sammyjay-ideasapplatest-ua9wvdo4v0r.ws-eu64.gitpod.io",
 ]
+
+COMPRESS_ROOT = BASE_DIR / 'static'
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)

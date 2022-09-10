@@ -1,0 +1,20 @@
+{% load compress %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
+    <title>{% block title %}{% endblock title %}</title>
+  </head>
+  <body class="max-w-5xl mx-auto">
+    {% include 'boards/nav.html' %}
+    {% block content %}
+    {% endblock content %}
+
+      <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+  </body>
+</html>
